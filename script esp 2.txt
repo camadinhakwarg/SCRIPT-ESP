@@ -1,0 +1,51 @@
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7yhx/kwargs_Ui_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+    Theme = "Dark", -- or any other theme
+    Size = UDim2.new(0, 555, 0, 400) -- default
+ }
+ 
+ local Main = UI:Tab{
+    Name = "Main"
+ }
+ 
+ local Divider = Main:Divider{
+    Name = "Main shit"
+ }
+ 
+ local QuitDivider = Main:Divider{
+    Name = "Quit"
+ }
+
+
+ local KillAll = Divider:Button{
+    Name = "esp",
+    Description = "esp ativado!",
+    Callback = function()local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local Teams = game:GetService("Teams")
+        local Camera = game.Workspace.CurrentCamera
+        local LocalPlayer = Players.LocalPlayer
+        local UserInputService = game:GetService("UserInputService")
+        local scriptEnabled = true
+        
+        local function createBillboard(player)
+            local billboard = Instance.new("BillboardGui")
+            billboard.Name = player.Name .. "_Billboard"
+            billboard.Adornee = player.Character:FindFirstChild("HumanoidRootPart")
+            billboard.Size = UDim2.new(6, 0, 6, 0)
+            billboard.StudsOffset = Vector3.new(0, -3, 0)
+            billboard.AlwaysOnTop = true
+            
+            local textLabel = Instance.new("TextLabel")
+            textLabel.Size = UDim2.new(1, 0, 1, 0)
+            textLabel.TextColor3 = Color3.new(1, 0, 0)
+            textLabel.BackgroundTransparency = 1
+            textLabel.TextScaled = true
+            textLabel.Font = Enum.Font.ArialBold
+            textLabel.Parent = billboard
+            
+            billboard.Parent = player.Character
+            return textLabel
+    end
+ }
